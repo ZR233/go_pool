@@ -45,8 +45,8 @@ func ConnFactoryGrpc(getHostsFunc GetHostsFunc) ConnFactory {
 		}
 
 		rand.Seed(time.Now().Unix())
-		rand.Intn(hostsCount)
-		host := hosts[hostsCount]
+		index := rand.Intn(hostsCount)
+		host := hosts[index]
 		closer, err = grpc.Dial(host, grpc.WithInsecure())
 
 		return
